@@ -1,6 +1,3 @@
-# curso-platzi-react-avanzado ⚛️
+# petgram-react ⚛️
 
-¡Sígueme en Youtube! https://www.youtube.com/midudev
-
-Repositorio con el código del [Curso Avanzado de React de Platzi](https://platzi.com/cursos/react-avanzado/)
-# petgram-react
+Repositorio con el código del [Curso Avanzado de React de Platzi](https://github.com/elvisss/petgram-react/)
