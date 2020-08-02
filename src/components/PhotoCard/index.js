@@ -1,31 +1,19 @@
-/* eslint-disable object-curly-newline */
 /* eslint-disable react/jsx-one-expression-per-line */
-import React, { useEffect, useRef, useState } from 'react';
-import { MdFavoriteBorder } from 'react-icons/md';
+/* eslint-disable object-curly-newline */
+import React from 'react';
+import { MdFavoriteBorder, MdFavorite } from 'react-icons/md';
 import { Article, ImgWrapper, Img, Button } from './styles';
+import useLocalStorage from '../../hooks/useLocalStorage';
+import useNearScreen from '../../hooks/useNearScreen';
 
 const DEFAULT_IMAGE = 'https://res.cloudinary.com/midudev/image/upload/w_300/q_80/v1560262103/dogs.png';
 
 const PhotoCard = ({ id, likes = 0, src = DEFAULT_IMAGE }) => {
-  const element = useRef(null);
-  const [show, setShow] = useState(false);
+  const [show, element] = useNearScreen();
+  const key = `like-${id}`;
+  const [liked, setLiked] = useLocalStorage(key, false);
 
-  useEffect(() => {
-    Promise.resolve(
-      typeof window.IntersectionObserver !== 'undefined'
-        ? window.IntersectionObserver
-        : import('intersection-observer'),
-    ).then(() => {
-      const observer = new window.IntersectionObserver((entries) => {
-        const { isIntersecting } = entries[0];
-        if (isIntersecting) {
-          setShow(true);
-          observer.disconnect();
-        }
-      });
-      observer.observe(element.current);
-    });
-  }, [element]);
+  const Icon = liked ? MdFavorite : MdFavoriteBorder;
 
   return (
     <Article ref={element}>
@@ -36,8 +24,8 @@ const PhotoCard = ({ id, likes = 0, src = DEFAULT_IMAGE }) => {
               <Img src={src} alt="" />
             </ImgWrapper>
           </a>
-          <Button type="button">
-            <MdFavoriteBorder size="32px" /> {likes} likes!
+          <Button onClick={() => setLiked(!liked)} type="button">
+            <Icon size="32px" /> {likes} likes!
           </Button>
         </>
       )}
