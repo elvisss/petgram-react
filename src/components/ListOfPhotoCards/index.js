@@ -1,12 +1,13 @@
+/* eslint-disable react/jsx-props-no-spreading */
 import React from 'react';
 import PhotoCard from '../PhotoCard';
 
-const ListOfPhotoCards = () => (
+const ListOfPhotoCardsComponent = ({ data: { photos = [] } } = {}) => (
   <ul>
-    {[1, 2, 3, 4, 5].map((id) => (
-      <PhotoCard key={id} id={id} />
+    {photos.map((photo) => (
+      <PhotoCard key={photo.id} id={photo.id} {...photo} />
     ))}
   </ul>
 );
 
-export default ListOfPhotoCards;
+export default ListOfPhotoCardsComponent;
