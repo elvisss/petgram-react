@@ -2,10 +2,10 @@ import React from 'react';
 import ListOfCategories from '../components/ListOfCategories';
 import { ListOfPhotoCards } from '../container/ListOfPhotoCards';
 
-const Home = ({ id }) => (
+const Home = ({ categoryId }) => (
   <>
     <ListOfCategories />
-    <ListOfPhotoCards categoryId={id} />
+    <ListOfPhotoCards categoryId={categoryId} />
   </>
 );
 
