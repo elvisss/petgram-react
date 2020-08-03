@@ -1,11 +1,10 @@
-/* eslint-disable no-unused-vars */
 /* eslint-disable react/jsx-props-no-spreading */
 import React from 'react';
 import { gql } from 'apollo-boost';
 import { Query } from 'react-apollo';
 import PhotoCard from '../components/PhotoCard';
 
-const query = gql`
+const GET_SINGLE_PHOTO = gql`
   query getSinglePhoto($id: ID!) {
     photo(id: $id) {
       id
@@ -18,13 +17,17 @@ const query = gql`
   }
 `;
 
+const renderProp = ({ loading, error, data = {} }) => {
+  if (loading) return <p>loading..</p>;
+  if (error) return <p>Error!</p>;
+
+  const { photo = {} } = data;
+  return <PhotoCard {...photo} />;
+};
+
 const PhotoCardWithQuery = ({ id }) => (
-  <Query query={query} variables={{ id }}>
-    {({ loading, data = {} }) => {
-      if (loading) return null;
-      const { photo = {} } = data;
-      return <PhotoCard {...photo} />;
-    }}
+  <Query query={GET_SINGLE_PHOTO} variables={{ id }}>
+    {renderProp}
   </Query>
 );
 
