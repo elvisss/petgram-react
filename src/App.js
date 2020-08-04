@@ -1,20 +1,17 @@
 import React from 'react';
 import { Router } from '@reach/router';
-import GlobalStyle from './styles/GlobalStyles';
-import Logo from './components/Logo';
+import Layout from './layout';
 import Home from './pages/Home';
 import Detail from './pages/Detail';
 
 const App = () => (
-  <>
-    <GlobalStyle />
-    <Logo />
+  <Layout>
     <Router>
       <Home path="/" />
       <Home path="/pet/:categoryId" />
       <Detail path="/detail/:detailId" />
     </Router>
-  </>
+  </Layout>
 );
 
 export default App;
