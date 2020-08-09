@@ -1,7 +1,8 @@
 /* eslint-disable object-curly-newline */
 import React from 'react';
 import useInputValue from '../../hooks/useInputValue';
-import { Form, Input, Button, Title, Error } from './styles';
+import { Form, Input, Title, Error } from './styles';
+import Submitbutton from '../Submitbutton';
 
 const UserForm = ({ error, disabled, onSubmit, title }) => {
   const email = useInputValue('');
@@ -35,9 +36,9 @@ const UserForm = ({ error, disabled, onSubmit, title }) => {
           value={password.value}
           onChange={password.onChange}
         />
-        <Button disabled={disabled} type="submit">
+        <Submitbutton disabled={disabled} type="submit">
           {title}
-        </Button>
+        </Submitbutton>
       </Form>
       {error && <Error>{error}</Error>}
     </>
