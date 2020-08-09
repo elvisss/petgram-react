@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Button from './styles';
 
 const Submitbutton = ({
@@ -8,5 +9,16 @@ const Submitbutton = ({
     {children}
   </Button>
 );
+
+Submitbutton.defaultProps = {
+  disabled: false,
+  onClick: () => {},
+};
+
+Submitbutton.propTypes = {
+  disabled: PropTypes.bool,
+  onClick: PropTypes.func,
+  children: PropTypes.node.isRequired,
+};
 
 export default Submitbutton;
