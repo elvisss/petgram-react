@@ -7,7 +7,8 @@
     "build": "webpack",
     "dev": "webpack-dev-server",
     "lint": "eslint --ext .jsx,.js src",
-    "pre-commit": "npm run lint"
+    "pre-commit": "npm run lint",
+    "serve:dev": "webpack --mode 'development' && npx serve dist -s"
   },
   "repository": {
     "type": "git",
