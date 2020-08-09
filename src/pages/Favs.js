@@ -1,11 +1,11 @@
 import React from 'react';
 import FavsWithQuery from '../container/GetFavorites';
+import PageLayout from '../components/PageLayout';
 
 const Favs = () => (
-  <>
-    <h1>Favs</h1>
+  <PageLayout title="Tus Favoritos" subtitle="Fotos de tus animales favoritos">
     <FavsWithQuery />
-  </>
+  </PageLayout>
 );
 
 export default Favs;
